@@ -36,6 +36,25 @@ body, html {
     background-color: #FFB8AF;
 }
 
+.inicio-l {
+    flex: 0.8;
+    background-color: #FFB8AF;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    padding-left: 20px;
+    padding-right: 50px;
+    justify-content: center;
+}
+
+.inicio-r {
+    flex: 2; 
+    background-color: #FFF2EB;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    
+}
+
 .content-wrapper {
     position: relative;
     z-index: 10;
@@ -91,7 +110,7 @@ body, html {
 .square {
     position: absolute;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px #6b6b881a;
 }
     
 .back-square {
@@ -198,7 +217,7 @@ body, html {
         }
 
         .login-card {
-            margin-top: 2rem;
+            margin-top: 4rem;
         }
 
     }
