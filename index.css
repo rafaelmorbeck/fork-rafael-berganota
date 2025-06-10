@@ -130,6 +130,20 @@ body, html {
     justify-content: center;
     align-items: center;
 }
+
+.post-container {
+    height: 50px;
+    width: 100%;
+    background: #FFB8AF;
+    border-radius: 10px;
+    align-items: center;
+    padding: 3rem;
+    z-index: 1;
+    position: relative;
+    margin-left: 3em;
+    margin-right: 2em;
+    margin-top: 3em;
+}
     
 .register-image {
     width: 220px;
