@@ -79,10 +79,6 @@ body, html {
     right: -200px;
 }
 
-.btn {
-    background-color: #FFB8AF;
-}
-
 .graphic-container {
     position: relative;
     height: 100%;
@@ -140,7 +136,7 @@ body, html {
 }
     
 .form-control {
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 0.75rem 1rem;
     margin-bottom: 1.25rem;
     transition: all 0.3s;
