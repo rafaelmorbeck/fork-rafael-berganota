@@ -81,6 +81,27 @@ body, html {
     transform: scale(1.1);
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+    animation: fadeIn 0.4s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 .profile-img {
     width: 180px;
     height: 180px;
@@ -511,6 +532,80 @@ body, html {
     max-width: 400px;
     margin: 0 auto;
 }
+
+.sheet-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 85vh;
+    background: white;
+    border-radius: 25px 25px 0 0;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transform: translateY(100%);
+    transition: transform 0.4s ease-out;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.sheet-container.active {
+    transform: translateY(0);
+}
+
+.sheet-header {
+    background: #FFB8AF;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sheet-title {
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.sheet-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.sheet-close:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.sheet-body {
+    padding: 2rem;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 1.8rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.7rem;
+    color: #EB5D4B;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
     
 .form-title {
     color: #2d3436;
@@ -520,6 +615,12 @@ body, html {
 }
     
 .form-control {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #FFD6D1;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s;
     border-radius: 15px;
     padding: 0.75rem 1rem;
     margin-bottom: 1.25rem;
@@ -528,8 +629,22 @@ body, html {
     
 .form-control:focus {
     border-color: #EB5D4B;
-    box-shadow: 0 0 0 0.25rem #FFB8AF;
+    box-shadow: 0 0 0 3px #FFB8AF;
 }
+
+textarea.form-control {
+    min-height: 200px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #FFF;
+    border-top: 1px solid #FFE8E5;
+}
+
     
 .btn-register {
     background: linear-gradient(135deg, #FFB8AF, #fa7665);
