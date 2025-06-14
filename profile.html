@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário - Berganota</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .profile-container {
+            width: 100%;
+            max-width: 700px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .profile-header {
+            background: #FFB8AF;
+            padding: 40px 30px 80px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .back-button {
+            position: absolute;
+            left: 25px;
+            top: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            background: white;
+        }
+        
+        .back-button i {
+            color: #EB5D4B;
+            font-size: 1.2rem;
+        }
+        
+        .profile-title {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .profile-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-top: 8px;
+        }
+        
+        .profile-content {
+            padding: 30px;
+            padding-top: 70px;
+            margin-top: -60px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .profile-picture-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            z-index: 5;
+        }
+        
+        .profile-picture {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            background: white;
+        }
+        
+        .change-photo-btn {
+            background: #FFE8E5;
+            border: none;
+            border-radius: 50px;
+            color: #EB5D4B;
+            padding: 0.7rem 1.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+        
+        .change-photo-btn:hover {
+            background: #FFD6D1;
+            transform: translateY(-2px);
+        }
+        
+        .profile-form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 22px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-label {
+            margin-bottom: 8px;
+            color: #495057;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 1.05rem;
+        }
+        
+        .form-label i {
+            color: #EB5D4B;
+            font-size: 1.1rem;
+            width: 25px;
+            text-align: center;
+        }
+        
+        .form-control {
+            padding: 14px 18px;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: #f8f9fa;
+        }
+        
+        .form-control:focus {
+            border-color: #EB5D4B;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(235, 93, 75, 0.15);
+            background: white;
+        }
+        
+        .password-container {
+            position: relative;
+        }
+        
+        .toggle-password {
+            position: absolute;
+            right: 18px;
+            top: 16px;
+            color: #6c757d;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        
+        .profile-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            padding-top: 30px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            min-width: 180px;
+            justify-content: center;
+        }
+        
+        .btn-save {
+            background: linear-gradient(135deg, #EB5D4B, #ff998b);
+            color: white;
+            box-shadow: 0 5px 15px rgba(235, 93, 75, 0.25);
+        }
+        
+        .btn-save:hover {
+            background: linear-gradient(135deg, #d95240, #e88a7d);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(235, 93, 75, 0.35);
+        }
+        
+        .btn-cancel {
+            background: white;
+            color: #6c757d;
+            border: 2px solid #e9ecef;
+        }
+        
+        .btn-cancel:hover {
+            background: #f8f9fa;
+            border-color: #dee2e6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+            font-size: 0.9rem;
+            background: #f8f9fa;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .profile-header {
+                padding: 30px 20px 70px;
+            }
+            
+            .profile-content {
+                padding: 25px;
+                padding-top: 60px;
+            }
+            
+            .profile-title {
+                font-size: 1.6rem;
+            }
+            
+            .profile-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .profile-header {
+                padding: 25px 15px 60px;
+            }
+            
+            .back-button {
+                top: 15px;
+                left: 15px;
+                width: 40px;
+                height: 40px;
+            }
+            
+            .profile-picture {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .form-label {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <button class="back-button" onclick="window.history.back()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1 class="profile-title">Configurações do Perfil</h1>
+            <p class="profile-subtitle">Gerencie suas informações pessoais</p>
+        </div>
+        
+        <div class="profile-content">
+            <div class="profile-picture-container">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80" 
+                     class="profile-picture" 
+                     alt="Foto de perfil">
+                <button class="change-photo-btn">
+                    <i class="fas fa-camera"></i> Alterar Foto
+                </button>
+            </div>
+            
+            <form id="profile-form" class="profile-form">
+                <div class="form-group">
+                    <label class="form-label"><i class="fas fa-user"></i> Nome Completo</label>
+                    <input type="text" class="form-control" value="Maria Silva" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label"><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" class="form-control" value="maria.silva@exemplo.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label"><i class="fas fa-phone"></i> Telefone</label>
+                    <input type="tel" class="form-control" value="(11) 98765-4321">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label"><i class="fas fa-calendar"></i> Data de Nascimento</label>
+                    <input type="date" class="form-control" value="1985-05-15">
+                </div>
+                
+                <div class="form-group password-container">
+                    <label class="form-label"><i class="fas fa-lock"></i> Senha Atual</label>
+                    <input type="password" class="form-control" value="password123" id="current-password">
+                    <span class="toggle-password" onclick="togglePasswordVisibility('current-password', 'current-eye-icon')">
+                        <i class="fas fa-eye" id="current-eye-icon"></i>
+                    </span>
+                </div>
+                
+                <div class="form-group password-container">
+                    <label class="form-label"><i class="fas fa-key"></i> Nova Senha</label>
+                    <input type="password" class="form-control" id="new-password">
+                    <span class="toggle-password" onclick="togglePasswordVisibility('new-password', 'new-eye-icon')">
+                        <i class="fas fa-eye" id="new-eye-icon"></i>
+                    </span>
+                </div>
+            </form>
+            
+            <div class="profile-actions">
+                <button class="btn btn-cancel" onclick="window.history.back()">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+                <button class="btn btn-save" onclick="saveProfile()">
+                    <i class="fas fa-save"></i> Salvar Alterações
+                </button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Berganota &copy; 2023 | Todos os direitos reservados</p>
+        </div>
+    </div>
+
+    <script>
+        // Função para salvar o perfil
+        function saveProfile() {
+            // Simular validação dos dados
+            const nome = document.querySelector('input[type="text"]').value;
+            const email = document.querySelector('input[type="email"]').value;
+            
+            if (!nome || !email) {
+                alert('Por favor, preencha os campos obrigatórios (Nome e Email)');
+                return;
+            }
+            
+            const newPassword = document.getElementById('new-password').value;
+            if (newPassword && newPassword.length < 6) {
+                alert('A nova senha deve ter pelo menos 6 caracteres');
+                return;
+            }
+            
+            // Simular envio para o banco de dados
+            console.log('Dados a serem enviados para o banco de dados:');
+            console.log('Nome:', nome);
+            console.log('Email:', email);
+            console.log('Telefone:', document.querySelector('input[type="tel"]').value);
+            console.log('Data de Nascimento:', document.querySelector('input[type="date"]').value);
+            if (newPassword) {
+                console.log('Nova senha:', newPassword);
+            }
+            
+            // Mostrar feedback para o usuário
+            alert('Perfil atualizado com sucesso!');
+            
+            // Em uma aplicação real, aqui teríamos:
+            // 1. Chamada AJAX para atualizar os dados no banco de dados
+            // 2. Tratamento da resposta do servidor
+            // 3. Atualização da interface conforme necessário
+            
+            // Redirecionar após 1 segundo (simulação)
+            setTimeout(() => {
+                window.history.back();
+            }, 1000);
+        }
+        
+        // Função para mostrar/ocultar senha
+        function togglePasswordVisibility(inputId, iconId) {
+            const passwordInput = document.getElementById(inputId);
+            const eyeIcon = document.getElementById(iconId);
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        }
+        
+        // Simular carregamento de dados do banco de dados
+        window.onload = function() {
+            console.log("Dados carregados do banco de dados");
+            // Em uma aplicação real:
+            // fetch('/api/user-profile')
+            //   .then(response => response.json())
+            //   .then(data => preencherFormulario(data));
+        }
+        
+        // Função para simular preenchimento dos dados
+        function preencherFormulario(dados) {
+            // Preencheria os campos com os dados do usuário
+            // document.querySelector('input[type="text"]').value = dados.nome;
+            // document.querySelector('input[type="email"]').value = dados.email;
+            // etc.
+        }
+    </script>
+</body>
+</html>
