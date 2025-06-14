@@ -629,6 +629,7 @@ body, html {
     
 .form-control:focus {
     border-color: #EB5D4B;
+    outline: none;
     box-shadow: 0 0 0 3px #FFB8AF;
 }
 
@@ -698,6 +699,10 @@ textarea.form-control {
             font-size: 1.8rem;
         }
 
+        .sheet-container {
+            height: 90vh;
+        }
+
         .graphic-container {
             margin-bottom: 3rem;
             height: auto;
@@ -754,6 +759,10 @@ textarea.form-control {
     .post-card {
         padding: 1.5rem;
     }
+
+    .form-actions {
+        flex-direction: column;
+    }
 }
     
     @media (max-width: 576px) {
@@ -781,6 +790,14 @@ textarea.form-control {
         
         .tab {
             margin-bottom: 0.5rem;
+        }
+
+        .sheet-header {
+            padding: 1rem;
+        }
+        
+        .sheet-body {
+            padding: 1.5rem;
         }
     }
 
