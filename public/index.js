@@ -29,6 +29,7 @@ function minhaFuncao() {
     }, 10);
 }
 
+
 // Funções para o sheet view
 function openSheet() {
     document.getElementById('sheet').classList.add('active');

@@ -178,7 +178,7 @@ body, html {
     align-items: center;
 }
 
- .tabs-container {
+.tabs-container {
     margin-bottom: 2rem;
 }
 
@@ -292,18 +292,36 @@ body, html {
     text-shadow: 0 2px 3px rgba(0,0,0,0.1);
 }
 
+
+
 .post-actions {
+    background: none;
     display: flex;
     gap: 1.5rem;
 }
 
-.post-actions a {
+.post-actions a{
     color: #FFF2EB;
     font-size: 1.4rem;
     transition: all 0.3s;
 }
 
-.post-actions a:hover {
+.post-actions a:hover {    
+    color: #FFF;
+    transform: scale(1.2);
+}
+
+.edit-btn {
+    background: none;
+    display: flex;
+    gap: 1.5rem;
+    color: #FFF2EB;
+    font-size: 1.4rem;
+    transition: all 0.3s;
+    border: none;
+}
+
+.edit-btn:hover {    
     color: #FFF;
     transform: scale(1.2);
 }

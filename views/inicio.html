@@ -70,8 +70,11 @@
                             <div class="post-header">
                                 <h3 class="post-title">Reunião Familiar</h3>
                                 <div class="post-actions">
-                                    <a href="#"><i class="fas fa-edit"></i></a>
-                                    <a href="#"><i class="fas fa-trash"></i></a>
+                                    <!-- <button class="sheet-close" onclick="openSheet()"><i class="fas fa-edit"></i></button> -->
+                                    <button class="edit-btn" onclick="openSheet()"><i class="fas fa-edit"></i></button>
+                                    <button class="edit-btn" onclick="openSheet()"><i class="fas fa-trash"></i></button>
+                                    <!-- <a href="#"><i class="fas fa-edit"></i></a>
+                                    <a href="#"><i class="fas fa-trash"></i></a> -->
                                 </div>
                             </div>
                             <div class="post-content">
@@ -183,69 +186,82 @@
         </div>
     </div>
 
+    <!-- Overlay para o sheet view -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Sheet View para Novo Post -->
+    <div class="sheet-container" id="sheet">
+        <div class="sheet-header">
+            <h3 class="sheet-title"><i class="fas fa-plus-circle"></i> Criar Novo Post</h3>
+            <button class="sheet-close" onclick="closeSheet()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="sheet-body">
+            <form id="post-form">
+                <div class="form-group">
+                    <label class="form-label" for="post-title">Título do Post</label>
+                    <input type="text" class="form-control" id="post-title" placeholder="Digite um título" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="post-content">Conteúdo</label>
+                    <textarea class="form-control" id="post-content" placeholder="Escreva seu post aqui..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Importância</label>
+                    <div style="display: flex; gap: 1rem;">
+                        <label class="form-radio">
+                            <input type="radio" name="importance" value="normal" checked>
+                            <span>Normal</span>
+                        </label>
+                        <label class="form-radio">
+                            <input type="radio" name="importance" value="important">
+                            <span>Importante</span>
+                        </label>
+                        <label class="form-radio">
+                            <input type="radio" name="importance" value="urgent">
+                            <span>Urgente</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="post-category">Categoria</label>
+                    <select class="form-control" id="post-category">
+                        <option value="">Selecione uma categoria</option>
+                        <option value="event">Evento Familiar</option>
+                        <option value="shopping">Lista de Compras</option>
+                        <option value="reminder">Lembrete</option>
+                        <option value="announcement">Anúncio</option>
+                        <option value="other">Outro</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        
+        <div class="form-actions">
+            <button class="btn btn-secondary" onclick="closeSheet()">Cancelar</button>
+            <button class="btn btn-primary" onclick="submitPost()">Publicar</button>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="index.js"></script>
     <script>
-        // Função para alternar entre abas
-        function switchTab(tabId) {
-            // Esconder todos os conteúdos de abas
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Remover classe ativa de todas as abas
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Mostrar a aba selecionada
-            document.getElementById(tabId).classList.add('active');
-            
-            // Adicionar classe ativa ao botão da aba
-            event.currentTarget.classList.add('active');
-        }
-        
-        // Função JavaScript para a nova aba
-        function minhaFuncao() {
-            console.log("Função chamada ao clicar na aba 'Minha Família'");
-            
-            // Exemplo de ação que pode ser realizada
-            const notification = document.querySelector('.notification');
-            notification.style.animation = 'none';
-            setTimeout(() => {
-                notification.style.animation = 'pulse 1.5s';
-            }, 10);
-            
-            // Aqui você pode adicionar mais lógica conforme necessário
-        }
-        
-        // Adicionar animação de pulso
-        const style = document.createElement('style');
-        style.innerHTML = `
-            @keyframes pulse {
-                0% { transform: scale(1); }
-                50% { transform: scale(1.02); }
-                100% { transform: scale(1); }
-            }
-        `;
-        document.head.appendChild(style);
-        
-        // Efeito para os botões de ação
-        document.querySelectorAll('.post-actions a').forEach(link => {
-            link.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.2)';
-            });
-            
-            link.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1)';
-            });
-        });
         
         // Efeito para o botão de novo post
         const addPostBtn = document.querySelector('.add-post-btn');
         if (addPostBtn) {
-            addPostBtn.addEventListener('click', function() {
-                alert('Funcionalidade de novo post será implementada aqui!');
-            });
+            // addPostBtn.addEventListener('click', function() {
+            //     openSheet();
+            //     alert('Funcionalidade de novo post será implementada aqui!');
+            // });
+
+            addPostBtn.addEventListener('click', ()=>openSheet());
+
         }
     </script>
 </body>
