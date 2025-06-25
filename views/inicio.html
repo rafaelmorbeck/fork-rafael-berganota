@@ -12,8 +12,8 @@
     <div class="main-container">
         <div class="profile-section">
             <div class="action-icons">
-                <a href="#"><i class="fas fa-sign-out-alt"></i></a>
-                <a href="#"><i class="fas fa-cog"></i></a>
+                <a href="/"><i class="fas fa-sign-out-alt"></i></a>
+                <a href="/perfil"><i class="fas fa-cog"></i></a>
             </div>
             
             <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80" 
@@ -39,18 +39,31 @@
         <!-- Seção direita - Conteúdo -->
         <div class="content-section">
             <div class="tabs-container">
-                <div class="tabs">
-                    <button class="tab active" onclick="switchTab('posts-tab')">
-                        <i class="fas fa-newspaper"></i> Seus Posts
-                    </button>
-                    <button class="tab" onclick="switchTab('family-tab'); minhaFuncao()">
-                        <i class="fas fa-users"></i> Plano Família
-                    </button>
+                <div class="tabs d-flex justify-content-between">
+                    
+                    <div>
+                        <button class="tab active" onclick="switchTab('posts-tab')">
+                            <i class="fas fa-newspaper"></i> Seus Posts
+                        </button>
+                        <button class="tab" onclick="switchTab('family-tab'); minhaFuncao()">
+                            <i class="fas fa-users"></i> Plano Família
+                        </button>
+                    </div>
+
+                    <!-- <div class="d-flex justify-content-end"> -->
+                    <div>
+                            <button class="add-post-btn">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                    </div>
+
                 </div>
                 
                 <!-- Aba de Posts -->
                 <div id="posts-tab" class="tab-content active">
                     <div class="posts-container">
+
+                        
                         
                         <!-- Post 1 -->
                         <div class="post-card">
@@ -96,13 +109,6 @@
                                 <span>Por: João Silva</span>
                             </div>
                         </div>
-
-                        <div class="d-flex justify-content-end">
-                            <button class="add-post-btn">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                        
                     </div>
                 </div>
                 
